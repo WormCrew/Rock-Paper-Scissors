@@ -38,11 +38,14 @@ function playRound(playerSelection, computerSelection) {
         }
     }
     if (battleResult == -1){
-        resultText = ("You lose, " + computerSelection + " beats " + playerSelection)
+        resultText = ("You lose, " + computerSelection + " beats " + playerSelection);
+        computerCount++;
     } else if (battleResult == 1){
-        resultText = ("You win, " + playerSelection + " beats " + computerSelection)
+        resultText = ("You win, " + playerSelection + " beats " + computerSelection);
+        playerCount++;
     } else if (battleResult == 0){
-        resultText = ("A draw, " + computerSelection + " is the same as " + playerSelection)
+        resultText = ("A draw, " + computerSelection + " is the same as " + playerSelection);
+        drawCount++;
     };
     return(resultText);
 };
@@ -61,16 +64,26 @@ function computerPlay(){
     }
     return(computerObject);
 };
-
+function game(){
+    playerCount = 0;
+    computerCount = 0;
+    drawCount = 0;
+    for (loop=0; loop< 5; loop++){ 
 const playerSelection = playerPlay()
 const computerSelection = computerPlay()
 console.log(playRound(playerSelection, computerSelection))
+}
+console.log("Player Score: " + playerCount + ", Computer Score: " + computerCount + ", Drawn Games: " + drawCount);
+}
 
 function playerPlay(){
-    let playerEntry = (prompt("Select rock, paper or scissors", "");
-    playerEntry = playerEntry.toLowercase();
+    var playerEntry = (prompt("Select rock, paper or scissors", ""));
+    var playerEntryLower = playerEntry.toLowerCase();
+    return playerEntryLower
+};
 
-}
 </script>
+
+ <button onclick="game()">Click me</button> 
 </body>
 </html>
